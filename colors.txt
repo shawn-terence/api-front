@@ -1,0 +1,3 @@
+#D22323 this is our shade of red
+#FFFFFF this is our shade of white
+#0E0D0D this is our shade of black
