@@ -9,9 +9,8 @@ Currently, two official plugins are available:
 
 ## Deployed Web App
 ### Domains
-flick-fusion-frontend.vercel.app
-flick-fusion-frontend-git-main-dmbeastzs-projects.vercel.app
-flick-fusion-frontend-8u3qfxhoi-dmbeastzs-projects.vercel.app
+
+https://flick-fusion-frontend-git-main-dmbeastzs-projects.vercel.app/
 
 
 
