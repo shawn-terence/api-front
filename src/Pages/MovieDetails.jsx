@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
+import Navbar from '../Components/Navbar';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -13,17 +13,20 @@ const MovieDetails = () => {
     fetchMovie();
   }, []);
 
-  const fetchMovie = async () => {
-    try {
-      const response = await fetch(`https://flickfusion-backend-dyeq.onrender.com/movies/${1}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch movie');
-      }
-      const data = await response.json();
-      setMovie(data);
-    } catch (error) {
-      setError(error.message);
-    }
+  const fetchMovie = () => {
+    fetch(`https://flickfusion-backend-dyeq.onrender.com/movies/${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch movie');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setMovie(data);
+      })
+      .catch(error => {
+        setError(error.message);
+      });
   };
 
   if (error) {
@@ -31,6 +34,9 @@ const MovieDetails = () => {
   }
 
   return (
+    <div >
+    <Navbar />
+    
     <div className="custom-font bg-black text-white font-jolly-lodger flex">
       {movie ? (
         <div className={`flex ${isMobile ? 'flex-col items-center' : 'py-52'}`}>
@@ -45,6 +51,7 @@ const MovieDetails = () => {
       ) : (
         <div>Loading...</div>
       )}
+    </div>
     </div>
   );
 };
