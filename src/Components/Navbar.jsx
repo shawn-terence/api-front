@@ -25,9 +25,11 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0 flex items-center">
-              <span className={`text-white ${isMobile ? 'text-3xl' : 'text-4xl'} ml-2 font-jolly-lodger`}>FLICK</span>
-              <img className="block lg:hidden h-8 w-auto" src={movieLogo} alt="Movie Logo" />
-              <img className="hidden lg:block h-8 w-auto" src={movieLogo} alt="Movie Logo" />
+              <span className={`text-white ${isMobile ? 'text-3xl' : 'text-4xl'} ml-2 font-jolly-lodger pr-2`}>FLICK</span>
+              <Link to="/" className="flex-shrink-0">
+                <img className="block lg:hidden h-8 w-auto" src={movieLogo} alt="Movie Logo" />
+                <img className="hidden lg:block h-8 w-auto" src={movieLogo} alt="Movie Logo" />
+              </Link>
               <span className={`text-white ${isMobile ? 'text-3xl' : 'text-4xl'} ml-2 font-jolly-lodger`}>FUSION</span>
             </div>
             {isMobile ? (

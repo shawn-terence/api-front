@@ -3,8 +3,7 @@ import "./App.css";
 import Homepage from "./Pages/HomePage";
 import AuthenticationPage from "./Pages/AuthenticationPage"
 import BookingPage from "./Pages/BookingPage"
-import MoviesPage from "./Pages/MoviesPage"
-import OnTheatre from "./Pages/OnTheatre"
+import MovieDetails from "./Pages/MovieDetails";
 export const BASE_URL = 'https://flickfusion-backend-dyeq.onrender.com/'
 
 const App = () => {
@@ -15,8 +14,7 @@ const App = () => {
                 <Route path="/" element={<Homepage />}  exact/>
                 <Route path="/authentication" element={<AuthenticationPage />} />
                 <Route path="/booking" element={<BookingPage />} />
-                <Route path="/movies" element={<MoviesPage />} />
-                <Route path="/ontheatre" element={<OnTheatre />} />
+                <Route path="/moviedetails" element={<MovieDetails />} />
             </Routes>
         </BrowserRouter>
     );
