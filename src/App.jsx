@@ -5,6 +5,7 @@ import AuthenticationPage from "./Pages/AuthenticationPage"
 import BookingPage from "./Pages/BookingPage"
 import MoviesPage from "./Pages/MoviesPage"
 import OnTheatre from "./Pages/OnTheatre"
+export const BASE_URL = 'https://flickfusion-backend.onrender.com/'
 
 const App = () => {
     
