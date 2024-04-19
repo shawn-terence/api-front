@@ -102,18 +102,11 @@ const BookingPage = () => {
         <div className="lg:w-1/2 p-5">
           <h2 className="text-6xl text-red-500 mb-4">{movie?.title}</h2>
           <p className="mb-4 text-4xl">{movie?.description}</p>
-          <p className="mb-4 text-3xl">Genre: {movie?.genre}</p>
+          <p className="mb-4 text-3xl">Genre: {movie?.genre_theater}</p>
           <p className="mb-4 text-3xl">Year: {movie?.year}</p>
-          <p className="mb-4 text-3xl">Rating: {movie?.rating}</p>
-          <p className="mb-4 text-3xl">Price: {movie?.price}</p>
-          <a
-            href={movie?.trailer_url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-red-500 hover:underline text-4xl cursor-pointer"
-          >
-            Watch Trailer
-          </a>
+          <p className="mb-4 text-3xl">Rating: {movie?.rating_theater}</p>
+          <p className="mb-4 text-3xl">Price: {movie?.price_theater}</p>
+
         </div>
       </div>
 
