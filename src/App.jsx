@@ -6,6 +6,7 @@ import BookingPage from "./Pages/BookingPage";
 import MovieDetails from "./Pages/MovieDetails";
 import BuyMovie from "./Pages/BuyMovie";
 import OnTheatre from "./Pages/OnTheatre";
+import TheatreDetails from "./Pages/TheatreDetails";
 
 export const BASE_URL = 'https://flickfusion-backend-dyeq.onrender.com/';
 
@@ -18,7 +19,8 @@ const App = () => {
                 <Route path="/booking/:ontheatreId/seats" element={<BookingPage />} />
                 <Route path="/movie-details/:id" element={<MovieDetails />} />
                 <Route path="/buy-movie" element={<BuyMovie />} />
-                <Route path="/ontheatre" element={<OnTheatre />} />  {/* Add this line for OnTheatre page */}
+                <Route path="/ontheatre" element={<OnTheatre />} /> 
+                <Route path="/ontheatre-details/:id" element={<TheatreDetails />} />{/* Add this line for OnTheatre page */}
             </Routes>
         </BrowserRouter>
     );
