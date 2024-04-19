@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive';
-import Navbar from '../Components/Navbar';
-import { BASE_URL } from '../App';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import Navbar from "../Components/Navbar";
+import { BASE_URL } from "../App";
+import axios from "axios";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -21,7 +21,7 @@ const MovieDetails = () => {
       const response = await axios.get(`${BASE_URL}/movies/${id}`);
       setMovie(response.data);
     } catch (error) {
-      setError('Failed to fetch movie');
+      setError("Failed to fetch movie");
     }
   };
 
@@ -38,19 +38,33 @@ const MovieDetails = () => {
       <Navbar />
       <div className="custom-font bg-black text-white font-jolly-lodger flex">
         {movie ? (
-          <div className={`flex ${isMobile ? 'flex-col items-center' : 'py-52'}`}>
-            <img src={movie.poster} alt={movie.title} style={{ width: '300px', marginRight: '20px' }} />
-            <div className={`${isMobile ? 'text-center' : 'text-5xl'} py-8`}>
-              <h2 className='py-7'>{movie.title}</h2>
-              <p className='py-7'>Rating: {movie.rating}</p>
-              <h3 className='text-red-500 py-7'>Description</h3>
-              <p className='py-7'>{movie.description}</p>
+          <div
+            className={`flex ${isMobile ? "flex-col items-center" : "py-4"}`}
+          >
+            <img
+              src={movie.poster}
+              alt={movie.title}
+              className={`${isMobile ? "w-full" : "w-100 h-100"} lg:w-1/2`}
+              style={{ paddingLeft: "50px" }}
+            />
+            <div className={`${isMobile ? "text-center" : "text-5xl"} py-8 ml-5`}>
+              <h2 className="py-5 text-red-500">{movie.title}</h2>
+              <p className="py-7">Rating: {movie.rating}</p>
+              <h3 className="text-red-500 text-4xl">Description</h3>
+              <p className="pb-7 text-5xl">{movie.description}</p>
               {!isBought && (
-                <button onClick={handleBuyMovie} className="bg-red-500 text-white px-4 py-2 rounded-lg">
+                <button
+                  onClick={handleBuyMovie}
+                  className="bg-red-500 text-3xl text-white px-4 py-2 rounded-lg"
+                >
                   Buy Movie
                 </button>
               )}
-              {isBought && <p className="text-green-500 py-4">Movie successfully bought!</p>}
+              {isBought && (
+                <p className="text-green-500 py-4">
+                  Movie successfully bought!
+                </p>
+              )}
             </div>
           </div>
         ) : (

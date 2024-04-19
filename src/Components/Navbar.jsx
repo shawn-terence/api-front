@@ -1,22 +1,15 @@
 import { useState } from 'react';
 import movieLogo from '../assets/movie.png';
-import { FaUserCircle, FaBars, FaSun, FaMoon } from 'react-icons/fa';
+import { FaUserCircle, FaBars } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState('dark');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
   };
   
   return (
@@ -51,10 +44,6 @@ const Navbar = () => {
                   <Link to="/authentication" className="h-8 w-8 bg-gray-300 rounded-full flex items-center justify-center">
                     <FaUserCircle className="h-5 w-5 text-gray-600" />
                   </Link>
-                  {/* Toggle theme button */}
-                  <button onClick={toggleTheme} className="h-8 w-8 bg-gray-300 rounded-full flex items-center justify-center">
-                    {theme === 'light' ? <FaMoon className="h-5 w-5 text-gray-600" /> : <FaSun className="h-5 w-5 text-gray-600" />}
-                  </button>
                 </div>
               </div>
             )}
@@ -67,13 +56,7 @@ const Navbar = () => {
     <Link to="/ontheatre" className="block my-2 text-xl">NOW SHOWING</Link>
     <Link to="/buy-movie" className="block my-2 text-xl">BUY A MOVIE</Link>
     <Link to="/authentication" className="block my-2 text-xl">Profile</Link>
-    {/* Toggle theme buttons */}
-    <div className="flex justify-between">
-      <button onClick={toggleTheme} className="bg-gray-300 rounded-full h-8 w-8 flex items-center justify-center">
-        {theme === 'light' ? <FaMoon className="h-5 w-5 text-gray-600" /> : <FaSun className="h-5 w-5 text-gray-600" />}
-      </button>
-      <FaBars className="text-white cursor-pointer" onClick={toggleMenu} />
-    </div>
+    <FaBars className="text-white cursor-pointer" onClick={toggleMenu} />
   </div>
 )}
 
