@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { BASE_URL } from '../App';
-import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
 
-const MovieList = () => {
+const OnTheatre = () => {
   const [ontheatres, setOntheatres] = useState([]);
-  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     fetchOntheatres();
@@ -13,32 +12,24 @@ const MovieList = () => {
 
   const fetchOntheatres = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/ontheatre`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch ontheatres');
-      }
-      const data = await response.json();
-      setOntheatres(data);
+      const response = await axios.get(`${BASE_URL}/ontheatre`);
+      setOntheatres(response.data);
     } catch (error) {
-      console.error(error);
+      console.error('Error fetching ontheatres:', error);
     }
   };
 
   return (
     <div className="custom-font bg-black text-white font-jolly-lodger">
       <div>
-        {/* Title section */}
-        <section>
-          <div className={`text text-center ${isMobile ? 'py-10 text-5xl' : 'py-20 text-9xl'}`}>
-            FLICK FUSION
-          </div>
-        </section>
-        {/* Ontheatre list section */}
+        <div className="text text-center py-20 text-9xl">
+          NOW SHOWING
+        </div>
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {ontheatres.map(ontheatre => (
               <div key={ontheatre.id} className="bg-black p-4">
-                <Link to={`/booking/${ontheatre.id}/seats`}>
+                <Link to={`/movie-details/${ontheatre.id}`}>
                   <img
                     src={ontheatre.poster_theater}
                     alt={ontheatre.title}
@@ -52,9 +43,6 @@ const MovieList = () => {
                     <Link to={`/booking/${ontheatre.id}/seats`}>
                       <button className="bg-red-500 text-white px-4 py-2 rounded-lg mr-4">Book Seat</button>
                     </Link>
-                    <Link to="/buynow">
-                      <button className="bg-red-500 text-white px-4 py-2 rounded-lg">Buy Now</button>
-                    </Link>
                   </div>
                 </div>
               </div>
@@ -66,4 +54,4 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+export default OnTheatre;

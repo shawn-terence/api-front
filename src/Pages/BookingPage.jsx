@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../Components/Navbar';
 import { BASE_URL } from '../App';
 import { FaChair } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
+import { useParams } from 'react-router-dom';
 
-const Booking = () => {
+const BookingPage = () => {
+  const { ontheatreId } = useParams();
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [availableSeats, setAvailableSeats] = useState([]);
   const [selectedSeat, setSelectedSeat] = useState(null);
@@ -13,10 +15,16 @@ const Booking = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+    // Get token from local storage
+    const token = localStorage.getItem('token');
+
     const fetchAvailableSeats = async () => {
       try {
-        const ontheatreId = 1; 
-        const response = await axios.get(`${BASE_URL}/ontheatre/${ontheatreId}/seats`);
+        const response = await axios.get(`${BASE_URL}/ontheatre/${ontheatreId}/seats`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         setAvailableSeats(response.data.available_seats);
       } catch (error) {
         setErrorMessage('Error fetching available seats');
@@ -25,30 +33,36 @@ const Booking = () => {
 
     const fetchMovieDetails = async () => {
       try {
-          const ontheatreId = 2; 
-          const response = await fetch(`${BASE_URL}/ontheatre/${ontheatreId}`);
-          if (!response.ok) {
-              throw new Error('Failed to fetch movie details');
+        const response = await axios.get(`${BASE_URL}/ontheatre/${ontheatreId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
           }
-          const data = await response.json();
-          setMovie(data);
+        });
+        setMovie(response.data);
       } catch (error) {
-          console.error(error);
+        console.error(error);
       }
     };
 
     fetchAvailableSeats();
-    fetchMovieDetails(); 
-  }, []);
+    fetchMovieDetails();
+  }, [ontheatreId]);
 
   const handleSeatClick = async (seat) => {
+    // Get token from local storage
+    const token = localStorage.getItem('token');
+
     try {
-      const ontheatreId = 1; 
-      const response = await axios.post(`${BASE_URL}/book_seat/${ontheatreId}/${seat}`);
+      const response = await axios.post(`${BASE_URL}/book_seat/${ontheatreId}/${seat}`, {}, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       
       if (response.status === 200) {
         setSelectedSeat(seat);
         setErrorMessage(`Seat ${seat} booked successfully`);
+        console.log("post working")
       }
     } catch (error) {
       setErrorMessage(`Error booking seat ${seat}`);
@@ -57,10 +71,11 @@ const Booking = () => {
 
   return (
     <div style={{ backgroundColor: 'black', color: 'white', fontFamily: 'Jolly Lodger' }}>
-      <Navbar/>
+      <Navbar />
       <div className={isMobile ? 'flex flex-col items-center' : 'flex text-6xl'}>
-        {movie && <img src={movie.poster_theater} alt={movie.title} style={{ width: '600px', height: '700px', padding: '40px' }}/>}
+        {movie && <img src={movie.poster_theater} alt={movie.title} style={{ width: '600px', height: '700px', padding: '40px' }} />}
         <h2 className='py-10'>NOW SHOWING !!!</h2>
+        <p>{movie?.description}</p> {/* Display movie description */}
       </div>
 
       <p className='text-red-500 text-4xl px-7'>{errorMessage}</p>
@@ -83,4 +98,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default BookingPage;

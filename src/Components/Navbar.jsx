@@ -41,10 +41,10 @@ const Navbar = () => {
               <div className="hidden md:flex items-center">
                 <div className="ml-10 flex items-center space-x-4">
                   {/* Nav links */}
-                  <Link to="/movies" className={`text-white hover:bg-red-700 px-3 py-2 rounded-md ${isMobile ? 'text-xl' : 'text-3xl'} font-medium font-jolly-lodger`}>
+                  <Link to="/ontheatre" className={`text-white hover:bg-red-700 px-3 py-2 rounded-md ${isMobile ? 'text-xl' : 'text-3xl'} font-medium font-jolly-lodger`}>
                     NOW SHOWING
                   </Link>
-                  <Link to="/booking" className={`text-white hover:bg-red-700 px-3 py-2 rounded-md ${isMobile ? 'text-xl' : 'text-3xl'} font-medium font-jolly-lodger`}>
+                  <Link to="/buy-movie" className={`text-white hover:bg-red-700 px-3 py-2 rounded-md ${isMobile ? 'text-xl' : 'text-3xl'} font-medium font-jolly-lodger`}>
                     BUY A MOVIE
                   </Link>
                   {/* User placeholder */}
@@ -64,8 +64,8 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isMobile && isOpen && (
   <div className="bg-red-600 p-4 text-white fixed top-0 right-0 z-10 font-jolly-lodger">
-    <Link to="/movies" className="block my-2 text-xl">NOW SHOWING</Link>
-    <Link to="/booking" className="block my-2 text-xl">BUY A MOVIE</Link>
+    <Link to="/ontheatre" className="block my-2 text-xl">NOW SHOWING</Link>
+    <Link to="/buy-movie" className="block my-2 text-xl">BUY A MOVIE</Link>
     <Link to="/authentication" className="block my-2 text-xl">Profile</Link>
     {/* Toggle theme buttons */}
     <div className="flex justify-between">

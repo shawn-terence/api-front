@@ -18,15 +18,18 @@ export default function Login() {
         username: username,
         password: password
       });
-  
+
       if (loginResponse.status === 200) {
-        setErrorMessage("");
         const token = loginResponse.data.token;
-  
-        localStorage.setItem('token', token);
-  
+
+        // Set token in axios headers
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        navigate('/')
+
+        // Store token in local storage
+        localStorage.setItem('token', token);
+
+        setErrorMessage("");
+        navigate('/');
         console.log('logged in');
       } else {
         setErrorMessage("Invalid username or password");
