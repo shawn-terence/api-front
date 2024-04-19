@@ -50,6 +50,16 @@ const TheatreDetails = () => {
               <p className="py-7">Rating: {ontheatre.rating_theater}</p>
               <h3 className="text-red-500 text-4xl">Description</h3>
               <p className="pb-7 text-5xl">{ontheatre.description}</p>
+              <a
+            href={ontheatre?.trailer_url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-red-500 hover:underline text-4xl cursor-pointer"
+          >
+            Watch Trailer
+
+            
+          </a>
               <Link to={`/booking/${ontheatre.id}/seats`}>
                 <button className={`bg-red-500 text-3xl text-white px-4 py-2 rounded-lg ${isMobile ? 'mb-4' : ''}`}>Book Seat</button>
               </Link>

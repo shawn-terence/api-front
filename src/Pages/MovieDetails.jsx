@@ -52,6 +52,14 @@ const MovieDetails = () => {
               <p className="py-7">Rating: {movie.rating}</p>
               <h3 className="text-red-500 text-4xl">Description</h3>
               <p className="pb-7 text-5xl">{movie.description}</p>
+              <a
+            href={movie?.trailer_url}
+            target="_blank"
+            rel="noreferrer"
+            className="text-red-500 hover:underline text-4xl cursor-pointer"
+          >
+            Watch Trailer
+          </a>
               {!isBought && (
                 <button
                   onClick={handleBuyMovie}
