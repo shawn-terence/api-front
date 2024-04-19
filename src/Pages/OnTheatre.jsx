@@ -34,7 +34,7 @@ const OnTheatre = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {ontheatres.map(ontheatre => (
               <div key={ontheatre.id} className="bg-black p-4">
-                <Link to={`/movie-details/${ontheatre.id}`}>
+                <Link to={`/ontheatre-details/${ontheatre.id}`}>
                   <img
                     src={ontheatre.poster_theater}
                     alt={ontheatre.title}
