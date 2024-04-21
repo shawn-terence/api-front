@@ -50,11 +50,11 @@ const MovieDetails = () => {
               <p className="py-7">Rating: {movie.rating}</p>
               <h3 className="text-red-500 text-4xl">Description</h3>
               <p className="pb-7 text-5xl">{movie.description}</p>
-              <Link to={`/movie-trailers/${id}`}>
+              {/* <Link to={`/movie-trailers/${id}`}>
                 <button className="bg-red-500 text-3xl text-white px-4 py-2 rounded-lg">
                   Watch Trailer
                 </button>
-              </Link>
+              </Link> */}
               {!isBought && (
                 <button
                   onClick={handleBuyMovie}

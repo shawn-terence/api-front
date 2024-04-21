@@ -54,11 +54,11 @@ const TheatreDetails = () => {
               <Link to={`/booking/${ontheatre.id}/seats`}>
                 <button className={`bg-red-500 text-3xl text-white px-4 py-2 rounded-lg ${isMobile ? 'mb-4' : ''}`}>Book Seat</button>
               </Link>
-              <Link to={`/theatre-trailers/${ontheatre.id}`}>
+              {/* <Link to={`/theatre-trailers/${ontheatre.id}`}>
                 <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
                   Watch Trailer
                 </button>
-              </Link>
+              </Link> */}
               <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
                 <Link to="/" className="text-black-500">Back to Homepage</Link>
               </button>
