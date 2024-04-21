@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Navbar from "../Components/Navbar";
 import { BASE_URL } from "../App";
@@ -38,9 +38,7 @@ const MovieDetails = () => {
       <Navbar />
       <div className="custom-font bg-black text-white font-jolly-lodger flex">
         {movie ? (
-          <div
-            className={`flex ${isMobile ? "flex-col items-center" : "py-4"}`}
-          >
+          <div className={`flex ${isMobile ? "flex-col items-center" : "py-4"}`}>
             <img
               src={movie.poster}
               alt={movie.title}
@@ -52,14 +50,11 @@ const MovieDetails = () => {
               <p className="py-7">Rating: {movie.rating}</p>
               <h3 className="text-red-500 text-4xl">Description</h3>
               <p className="pb-7 text-5xl">{movie.description}</p>
-              <a
-            href={movie?.trailer_url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-red-500 hover:underline text-4xl cursor-pointer"
-          >
-            Watch Trailer
-          </a>
+              <Link to={`/movie-trailers/${id}`}>
+                <button className="bg-red-500 text-3xl text-white px-4 py-2 rounded-lg">
+                  Watch Trailer
+                </button>
+              </Link>
               {!isBought && (
                 <button
                   onClick={handleBuyMovie}
