@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Components/Navbar';
 
+
 const BASE_URL = 'https://flickfusion-backend-dyeq.onrender.com';
 
 const TheatreDetails = () => {
@@ -50,19 +51,14 @@ const TheatreDetails = () => {
               <p className="py-7">Rating: {ontheatre.rating_theater}</p>
               <h3 className="text-red-500 text-4xl">Description</h3>
               <p className="pb-7 text-5xl">{ontheatre.description}</p>
-              <a
-            href={ontheatre?.trailer_url}
-            target="_blank"
-            rel="noreferrer"
-            className="text-red-500 hover:underline text-4xl cursor-pointer"
-          >
-            Watch Trailer
-
-            
-          </a>
               <Link to={`/booking/${ontheatre.id}/seats`}>
                 <button className={`bg-red-500 text-3xl text-white px-4 py-2 rounded-lg ${isMobile ? 'mb-4' : ''}`}>Book Seat</button>
               </Link>
+              {/* <Link to={`/theatre-trailers/${ontheatre.id}`}>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+                  Watch Trailer
+                </button>
+              </Link> */}
               <button className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
                 <Link to="/" className="text-black-500">Back to Homepage</Link>
               </button>
