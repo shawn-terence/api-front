@@ -10,7 +10,7 @@ import TheatreDetails from "./Pages/TheatreDetails";
 import MovieTrailers from "./Pages/MovieTrailers";
 import TheatreTrailers from "./Pages/TheatreTrailers";
 
-export const BASE_URL = 'https://flickfusion-backend-dyeq.onrender.com/';
+export const BASE_URL = 'https://api-back-6lxa.onrender.com';
 
 const App = () => {
     return (
