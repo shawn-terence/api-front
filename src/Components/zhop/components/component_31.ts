@@ -19,3 +19,4 @@ const logYearInfo = () => {
 };
 
 logYearInfo();
+console.log("Update: Logging year info after changes.");
