@@ -31,5 +31,6 @@ function ExampleForm() {
     <p>Updated: React form now includes extra information.</p>
     <p>Updated: React form now includes extra information.</p>
     <p>Updated: React form now includes extra information.</p>
+    <p>Updated: React form now includes extra information.</p>
 
 export default ExampleForm;
